@@ -53,7 +53,7 @@ class UserProfile extends PureComponent {
           ({t('header.title.notLogin')})
         </Media>
         {/* <p className='break-line'>Log in to synchronize your projects on the cloud.</p> */}
-        <p className='break-line'>{this.renderLoginButton()}</p>
+        {/* <p className='break-line'>{this.renderLoginButton()}</p> */}
       </>
     }
     const { username, desc } = Auth.profile
@@ -71,19 +71,19 @@ class UserProfile extends PureComponent {
     </>
   }
 
-  renderLoginButton = () => {
-    const providers = process.env.LOGIN_PROVIDERS ? process.env.LOGIN_PROVIDERS.split(',') : ['github']
-    return providers.map(provider => (
-      <Button
-        color='primary'
-        size='sm'
-        key={`user-profile-login-${provider}`}
-        onClick={() => Auth.login(this.props.history, provider)}
-      >
-        <i key='sign-in-${provider}' className='fas fa-sign-in mr-2' />{providers.length > 1 ? `${t('header.title.login')} ${provider}` : t('header.title.login')}
-      </Button>
-    ))
-  }
+  // renderLoginButton = () => {
+  //   const providers = process.env.LOGIN_PROVIDERS ? process.env.LOGIN_PROVIDERS.split(',') : ['github']
+  //   return providers.map(provider => (
+  //     <Button
+  //       color='primary'
+  //       size='sm'
+  //       key={`user-profile-login-${provider}`}
+  //       onClick={() => Auth.login(this.props.history, provider)}
+  //     >
+  //       <i key='sign-in-${provider}' className='fas fa-sign-in mr-2' />{providers.length > 1 ? `${t('header.title.login')} ${provider}` : t('header.title.login')}
+  //     </Button>
+  //   ))
+  // }
 
   renderDescription = desc => {
     if (desc) {

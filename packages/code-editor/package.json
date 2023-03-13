@@ -48,6 +48,7 @@
     "babel-eslint": "^10.1.0",
     "cross-env": "^6.0.3",
     "node-sass": "npm:sass",
+    "postcss-preset-env": "^6.7.0",
     "rollup": "^2.37.1",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^2.3.0"

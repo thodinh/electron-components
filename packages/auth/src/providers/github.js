@@ -12,7 +12,8 @@ class GithubProvider extends BaseProvider {
   }
 
   get providerUrl() {
-    return process.env.REACT_APP_OAUTH_GITHUB_PROVIDER_URL
+    return "https://gitlab.innoria.com/oauth/authorize";
+    // return process.env.REACT_APP_OAUTH_GITHUB_PROVIDER_URL
   }
 
   get clientId() {
@@ -20,11 +21,13 @@ class GithubProvider extends BaseProvider {
   }
 
   get redirectUri() {
-    return `${process.env.REACT_APP_OAUTH_GITHUB_REDIRECT_URI}/${this.project}/github`
+    return "http://localhost:3000/callback?provider=github"
+    // return `${process.env.REACT_APP_OAUTH_GITHUB_REDIRECT_URI}/${this.project}/github`
   }
 
   get loginUrl() {
-    return `${this.providerUrl}?client_id=${this.clientId}&scope=read:user&redirect_uri=${this.redirectUri}`
+    // ?client_id=<client_id>&redirect_uri=<redirect_uri>&response_type=code&state=<state>&scope=<scope>
+    return `${this.providerUrl}?client_id=${this.clientId}&scope=read_user&redirect_uri=${this.redirectUri}&response_type=code`
   }
 
   get project() {
@@ -78,6 +81,7 @@ class GithubProvider extends BaseProvider {
   fetchTokens(code) {
     let body
     let url = `${this.serverUrl}/api/v1/auth/refresh-token`
+    console.log("url", url)
     let method = 'GET'
 
     if (code) {
